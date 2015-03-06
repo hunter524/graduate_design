@@ -26,14 +26,14 @@ import android.widget.TextView;
 
 import com.example.purblepairs.activity.R;
 
-import edu.aust.hunter.purblepairs.activity.GeneralGameActivity1.imgListener;
+import edu.aust.hunter.purblepairs.activity.GeneralAndCompetitionGameActivity.imgListener;
 import edu.aust.hunter.purblepairs.data.GeneralLevel;
 import edu.aust.hunter.purblepairs.data.JudgePairs;
 import edu.aust.hunter.purblepairs.data.Score;
 import edu.aust.hunter.purblepairs.resource.MediaPlay;
 import edu.aust.hunter.purblepairs.resource.PictureSetting;
 
-public class ChallengeGameActivity1 extends Activity {
+public class ChallengeGameActivity extends Activity {
 	
 	public MediaPlay mediaPlay ;
 	public  Boolean setPause = false;
@@ -83,8 +83,8 @@ public class ChallengeGameActivity1 extends Activity {
 	                WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON, 
 				WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
-		RunningActivity.challengeGameActivity1=ChallengeGameActivity1.this;
-		mediaPlay=new MediaPlay(ChallengeGameActivity1.this);
+		RunningActivity.challengeGameActivity1=ChallengeGameActivity.this;
+		mediaPlay=new MediaPlay(ChallengeGameActivity.this);
 	}
 	
 	@Override
@@ -96,11 +96,11 @@ public class ChallengeGameActivity1 extends Activity {
 		this.score=new Score();
 		this.countRemove=0;
 //		当子窗口点击退出时，父窗口也随之消失并返回
-		if (ChallengeGameActivity1.this.exitBoolean)
+		if (ChallengeGameActivity.this.exitBoolean)
 		{
 			handler1.removeCallbacks(updateRunnable1);
-			ChallengeGameActivity1.this.finish();
-			ChallengeGameActivity1.this.onDestroy();
+			ChallengeGameActivity.this.finish();
+			ChallengeGameActivity.this.onDestroy();
 			return;
 		}
 		if (this.Level==1) {
@@ -132,8 +132,8 @@ public class ChallengeGameActivity1 extends Activity {
 		case KeyEvent.KEYCODE_BACK:
 		{
 			handler1.removeCallbacks(updateRunnable1);
-			ChallengeGameActivity1.this.finish();
-			ChallengeGameActivity1.this.onDestroy();
+			ChallengeGameActivity.this.finish();
+			ChallengeGameActivity.this.onDestroy();
 		}
 			return true;
 		default:
@@ -206,10 +206,10 @@ public class ChallengeGameActivity1 extends Activity {
 		
 			if (this.countRemove==(imgList.size()/2) ){
 				handler1.removeCallbacks(updateRunnable1);
-				ChallengeGameActivity1.this.onPause();
-				Intent startIntent = new Intent(ChallengeGameActivity1.this,SuccessActivity.class);
+				ChallengeGameActivity.this.onPause();
+				Intent startIntent = new Intent(ChallengeGameActivity.this,SuccessActivity.class);
 				startIntent.putExtra("switchMode", 3);
-				ChallengeGameActivity1.this.startActivity(startIntent);
+				ChallengeGameActivity.this.startActivity(startIntent);
 				mediaPlay.successPlay();
 			}
 			judgePairs.set255();
@@ -235,7 +235,7 @@ public class ChallengeGameActivity1 extends Activity {
 	 */
 	private void startAnimation(final int imgId)
 	{
-		   Animation animation = AnimationUtils.loadAnimation(ChallengeGameActivity1.this, R.anim.back_scale);
+		   Animation animation = AnimationUtils.loadAnimation(ChallengeGameActivity.this, R.anim.back_scale);
     	   animation.setAnimationListener(new Animation.AnimationListener() {
 				@Override
 				public void onAnimationStart(Animation animation) {
@@ -253,7 +253,7 @@ public class ChallengeGameActivity1 extends Activity {
 					}
 	
 					//通过AnimationUtils得到动画配置文件(/res/anim/front_scale.xml),然后在把动画交给ImageView
-					imgList.get(imgId).startAnimation(AnimationUtils.loadAnimation(ChallengeGameActivity1.this, R.anim.front_scale));
+					imgList.get(imgId).startAnimation(AnimationUtils.loadAnimation(ChallengeGameActivity.this, R.anim.front_scale));
 				}
 			});
     	   imgList.get(imgId).startAnimation(animation);
@@ -261,7 +261,7 @@ public class ChallengeGameActivity1 extends Activity {
 	private void setFuction3()
 	{
 		if (setPause==false) {
-			this.levelTime=GeneralLevel.getlevelTime((ChallengeGameActivity1.this.Level*3));
+			this.levelTime=GeneralLevel.getlevelTime((ChallengeGameActivity.this.Level*3));
 		}	
 		this.imgBooleans=new ArrayList<Boolean>();
 		this.buttonIdToPicId=new ArrayList<Integer>();
@@ -287,7 +287,7 @@ public class ChallengeGameActivity1 extends Activity {
 	private void setFuction2()
 	{
 		if (setPause==false) {
-			this.levelTime=GeneralLevel.getlevelTime(ChallengeGameActivity1.this.Level*3);
+			this.levelTime=GeneralLevel.getlevelTime(ChallengeGameActivity.this.Level*3);
 		}	
 		this.imgBooleans=new ArrayList<Boolean>();
 		this.buttonIdToPicId=new ArrayList<Integer>();
@@ -313,7 +313,7 @@ public class ChallengeGameActivity1 extends Activity {
 	private void setFuction1()
 	{
 		if (setPause==false) {
-			this.levelTime=GeneralLevel.getlevelTime(ChallengeGameActivity1.this.Level*3);
+			this.levelTime=GeneralLevel.getlevelTime(ChallengeGameActivity.this.Level*3);
 		}	
 		this.imgBooleans=new ArrayList<Boolean>();
 		this.buttonIdToPicId=new ArrayList<Integer>();
@@ -619,21 +619,21 @@ public class ChallengeGameActivity1 extends Activity {
 			@Override
 			public void onClick(View v) {
 				// TODO 自动生成的方法存根
-				if (ChallengeGameActivity1.this.pauseButtonBoolean==false) {
-					ChallengeGameActivity1.this.pauseButtonBoolean=true;
-					ChallengeGameActivity1.this.cgtImg.setImageResource(R.drawable.restart1);
-					ChallengeGameActivity1.this.handler1.removeCallbacks(updateRunnable1);
+				if (ChallengeGameActivity.this.pauseButtonBoolean==false) {
+					ChallengeGameActivity.this.pauseButtonBoolean=true;
+					ChallengeGameActivity.this.cgtImg.setImageResource(R.drawable.restart1);
+					ChallengeGameActivity.this.handler1.removeCallbacks(updateRunnable1);
 					for (int i = 0; i < imgList.size(); i++) {
 						imgList.get(i).setClickable(false);
 					}
 				}
-				else if (ChallengeGameActivity1.this.pauseButtonBoolean==true) {
-					ChallengeGameActivity1.this.pauseButtonBoolean=false;
-					ChallengeGameActivity1.this.cgtImg.setImageResource(R.drawable.pause1);
+				else if (ChallengeGameActivity.this.pauseButtonBoolean==true) {
+					ChallengeGameActivity.this.pauseButtonBoolean=false;
+					ChallengeGameActivity.this.cgtImg.setImageResource(R.drawable.pause1);
 					for (int i = 0; i < imgList.size(); i++) {
 						imgList.get(i).setClickable(true);
 					}
-					ChallengeGameActivity1.this.handler1.postDelayed(updateRunnable1, 1000);
+					ChallengeGameActivity.this.handler1.postDelayed(updateRunnable1, 1000);
 				}
 			}
 		});
@@ -657,10 +657,10 @@ public class ChallengeGameActivity1 extends Activity {
 				//将线程从Handler对象中移除
 				handler1.removeCallbacks(updateRunnable1);
 				//关闭游戏，回到首页
-				ChallengeGameActivity1.this.onPause();
-				Intent startIntent = new Intent(ChallengeGameActivity1.this,FailActivity.class);
+				ChallengeGameActivity.this.onPause();
+				Intent startIntent = new Intent(ChallengeGameActivity.this,FailActivity.class);
 				startIntent.putExtra("switchMode", 3);
-				ChallengeGameActivity1.this.startActivity(startIntent);
+				ChallengeGameActivity.this.startActivity(startIntent);
 
 				return;
 			}

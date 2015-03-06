@@ -7,8 +7,8 @@ import android.os.Handler;
 
 import com.example.purblepairs.activity.R;
 
-import edu.aust.hunter.purblepairs.activity.ChallengeGameActivity1;
-import edu.aust.hunter.purblepairs.activity.GeneralGameActivity1;
+import edu.aust.hunter.purblepairs.activity.ChallengeGameActivity;
+import edu.aust.hunter.purblepairs.activity.GeneralAndCompetitionGameActivity;
 
 /**
  * @author hutao
@@ -26,11 +26,11 @@ public class MediaPlay {
 	private MediaPlayer successPlayer=null;
 	private MediaPlayer failPlayer=null;
 	final public Context context;
-	public MediaPlay(ChallengeGameActivity1 challengeGameActivity1)
+	public MediaPlay(ChallengeGameActivity challengeGameActivity1)
 	{
 		context=challengeGameActivity1;
 	}
-	public MediaPlay(GeneralGameActivity1 generalGameActivity1)
+	public MediaPlay(GeneralAndCompetitionGameActivity generalGameActivity1)
 	{
 		context=generalGameActivity1;
 	}

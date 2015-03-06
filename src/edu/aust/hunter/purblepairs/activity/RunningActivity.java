@@ -2,7 +2,7 @@ package edu.aust.hunter.purblepairs.activity;
 
 public class RunningActivity {
 
-	static public GeneralGameActivity1 generalGameActivity;
-	static public ChallengeGameActivity1 challengeGameActivity1;
+	static public GeneralAndCompetitionGameActivity generalGameActivity;
+	static public ChallengeGameActivity challengeGameActivity1;
 	
 }

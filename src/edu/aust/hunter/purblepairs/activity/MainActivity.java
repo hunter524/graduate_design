@@ -24,7 +24,7 @@ public class MainActivity extends Activity {
 	private Button btnMode=null;
 	private  Button btnSetting=null;
 	private  Button btnAbout=null;
-	private ImageView maimg=null;
+	private ImageView mainImg=null;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -33,10 +33,12 @@ public class MainActivity extends Activity {
 		this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, 
 	                WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		setContentView(R.layout.activity_main);
+		
 		findId();
 		setListener();
-		maimg=(ImageView)findViewById(R.id.maimageView1);
-		maimg.setOnClickListener(new OnClickListener() {
+//		关于信息的展示
+		mainImg=(ImageView)findViewById(R.id.mainImageView1);
+		mainImg.setOnClickListener(new OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
@@ -97,25 +99,5 @@ public class MainActivity extends Activity {
 		}
 		
 	}
-	class ImgViewSoudListenner implements OnClickListener
-	{
-
-		@Override
-		public void onClick(View v) {
-			// TODO 自动生成的方法存根
-			
-		}
-		
-	}
 	
-	class ImgViewShakeListenner implements OnClickListener
-	{
-
-		@Override
-		public void onClick(View v) {
-			// TODO 自动生成的方法存根
-			
-		}
-		
-	}
 }

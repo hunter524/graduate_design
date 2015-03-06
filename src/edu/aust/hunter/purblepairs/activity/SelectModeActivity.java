@@ -59,7 +59,7 @@ public class SelectModeActivity extends Activity {
 		@Override
 		public void onClick(View v) {
 			// TODO 自动生成的方法存根
-			Intent intent = new Intent(SelectModeActivity.this,ChallengeGameActivity1.class);
+			Intent intent = new Intent(SelectModeActivity.this,ChallengeGameActivity.class);
 			SelectModeActivity.this.startActivity(intent);
 		}
 		
@@ -70,7 +70,7 @@ public class SelectModeActivity extends Activity {
 		@Override
 		public void onClick(View v) {
 			// TODO 自动生成的方法存根
-			Intent intent = new Intent(SelectModeActivity.this,GeneralGameActivity1.class);
+			Intent intent = new Intent(SelectModeActivity.this,GeneralAndCompetitionGameActivity.class);
 			intent.putExtra("switchMode", 1);
 			SelectModeActivity.this.startActivity(intent);
 		}
@@ -83,7 +83,7 @@ public class SelectModeActivity extends Activity {
 		@Override
 		public void onClick(View v) {
 			// TODO 自动生成的方法存根
-			Intent intent = new Intent(SelectModeActivity.this,GeneralGameActivity1.class);
+			Intent intent = new Intent(SelectModeActivity.this,GeneralAndCompetitionGameActivity.class);
 			intent.putExtra("switchMode", 2);
 			SelectModeActivity.this.startActivity(intent);
 		}

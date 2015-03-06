@@ -35,7 +35,7 @@
             android:label="@string/app_name" >
         </activity>
         <activity
-            android:name="edu.aust.hunter.purblepairs.activity.GeneralGameActivity1"
+            android:name="edu.aust.hunter.purblepairs.activity.GeneralAndCompetitionGameActivity"
             android:label="@string/app_name" >
         </activity>
         <activity
@@ -43,7 +43,7 @@
             android:label="@string/app_name" >
         </activity>
         <activity
-            android:name="edu.aust.hunter.purblepairs.activity.ChallengeGameActivity1"
+            android:name="edu.aust.hunter.purblepairs.activity.ChallengeGameActivity"
             android:label="@string/app_name" >
         </activity>
         <activity

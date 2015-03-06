@@ -34,7 +34,7 @@ import edu.aust.hunter.purblepairs.resource.PictureSetting;
  */
 
 
-public class GeneralGameActivity1 extends Activity {
+public class GeneralAndCompetitionGameActivity extends Activity {
 //	翻牌游戏 模式选择 1 代表 普通模式
 //	1 普通模式关卡递增 时间递减
 //	2代表竞技模式，只有关记录翻牌完成的耗时
@@ -100,11 +100,11 @@ public class GeneralGameActivity1 extends Activity {
 				WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 		setContentView(R.layout.activity_game_general);
 
-		mediaPlay=new MediaPlay(GeneralGameActivity1.this);
-		RunningActivity.generalGameActivity=GeneralGameActivity1.this;
+		mediaPlay=new MediaPlay(GeneralAndCompetitionGameActivity.this);
+		RunningActivity.generalGameActivity=GeneralAndCompetitionGameActivity.this;
 		Intent recIntent =getIntent();
 		switchmode=recIntent.getIntExtra("switchMode", 0);
-		GeneralGameActivity1.Level=1;
+		GeneralAndCompetitionGameActivity.Level=1;
 
 	}
 //	覆写onStart方法
@@ -150,12 +150,12 @@ public class GeneralGameActivity1 extends Activity {
 		this.score=new Score();
 		this.countRemove=0;
 //		当子窗口点击退出时，父窗口也随之消失并返回
-		if (GeneralGameActivity1.this.exitBoolean)
+		if (GeneralAndCompetitionGameActivity.this.exitBoolean)
 		{
 			handler1.removeCallbacks(updateRunnable1);
 			handler2.removeCallbacks(updateRunnable2);
-			GeneralGameActivity1.this.finish();
-			GeneralGameActivity1.this.onDestroy();
+			GeneralAndCompetitionGameActivity.this.finish();
+			GeneralAndCompetitionGameActivity.this.onDestroy();
 			return;
 		}
 		if (switchmode==1) {
@@ -345,7 +345,7 @@ public class GeneralGameActivity1 extends Activity {
 	 */
 	private void startAnimation(final int imgId)
 	{
-		   Animation animation = AnimationUtils.loadAnimation(GeneralGameActivity1.this, R.anim.back_scale);
+		   Animation animation = AnimationUtils.loadAnimation(GeneralAndCompetitionGameActivity.this, R.anim.back_scale);
     	   animation.setAnimationListener(new Animation.AnimationListener() {
 				@Override
 				public void onAnimationStart(Animation animation) {
@@ -363,7 +363,7 @@ public class GeneralGameActivity1 extends Activity {
 					}
 	
 					//通过AnimationUtils得到动画配置文件(/res/anim/front_scale.xml),然后在把动画交给ImageView
-					imgList.get(imgId).startAnimation(AnimationUtils.loadAnimation(GeneralGameActivity1.this, R.anim.front_scale));
+					imgList.get(imgId).startAnimation(AnimationUtils.loadAnimation(GeneralAndCompetitionGameActivity.this, R.anim.front_scale));
 				}
 			});
     	   imgList.get(imgId).startAnimation(animation);
@@ -384,9 +384,9 @@ public class GeneralGameActivity1 extends Activity {
 				//将线程从Handler对象中移除
 				handler1.removeCallbacks(updateRunnable1);
 				//关闭游戏，回到首页
-				GeneralGameActivity1.this.onPause();
-				Intent startIntent = new Intent(GeneralGameActivity1.this,FailActivity.class);
-				GeneralGameActivity1.this.startActivity(startIntent);
+				GeneralAndCompetitionGameActivity.this.onPause();
+				Intent startIntent = new Intent(GeneralAndCompetitionGameActivity.this,FailActivity.class);
+				GeneralAndCompetitionGameActivity.this.startActivity(startIntent);
 				return;
 			}
 			else {
@@ -418,7 +418,7 @@ public class GeneralGameActivity1 extends Activity {
 	private void setFuction1()
 	{
 		if (setPause==false) {
-			this.levelTime=GeneralLevel.getlevelTime(GeneralGameActivity1.Level);
+			this.levelTime=GeneralLevel.getlevelTime(GeneralAndCompetitionGameActivity.Level);
 		}	
 		this.imgBooleans=new ArrayList<Boolean>();
 		this.buttonIdToPicId=new ArrayList<Integer>();
@@ -454,7 +454,7 @@ public class GeneralGameActivity1 extends Activity {
 //		调用相关功能函数
 
 		this.getWidetId();
-		GeneralGameActivity1.Level=0;
+		GeneralAndCompetitionGameActivity.Level=0;
 		if(this.setPause==false)
 		{
 			this.levelTime = GeneralLevel.getlevelTime(Level);
@@ -462,7 +462,7 @@ public class GeneralGameActivity1 extends Activity {
 		
 		this.ggTextView1.setText("0");
 		this.ggtextView2.setText(""+this.levelTime);
-		this.ggTextView3.setText(""+(GeneralGameActivity1.Level+1));
+		this.ggTextView3.setText(""+(GeneralAndCompetitionGameActivity.Level+1));
 		this.getSetWindPra();
 		this.getResToList();
 		pSetting.scalePicture();
@@ -504,10 +504,10 @@ public class GeneralGameActivity1 extends Activity {
 		
 			if (this.countRemove==10) {
 				handler1.removeCallbacks(updateRunnable1);
-				GeneralGameActivity1.this.onPause();
-				Intent startIntent = new Intent(GeneralGameActivity1.this,SuccessActivity.class);
+				GeneralAndCompetitionGameActivity.this.onPause();
+				Intent startIntent = new Intent(GeneralAndCompetitionGameActivity.this,SuccessActivity.class);
 				startIntent.putExtra("switchMode", switchmode);
-				GeneralGameActivity1.this.startActivity(startIntent);
+				GeneralAndCompetitionGameActivity.this.startActivity(startIntent);
 				mediaPlay.successPlay();
 			}
 			judgePairs.set255();
@@ -557,10 +557,10 @@ public class GeneralGameActivity1 extends Activity {
 			if (countRemove==10) {
 				mediaPlay.successPlay();
 				handler2.removeCallbacks(updateRunnable2);
-				GeneralGameActivity1.this.onPause();
-				Intent startIntent = new Intent(GeneralGameActivity1.this,SuccessActivity.class);
+				GeneralAndCompetitionGameActivity.this.onPause();
+				Intent startIntent = new Intent(GeneralAndCompetitionGameActivity.this,SuccessActivity.class);
 				startIntent.putExtra("switchMode", 2);
-				GeneralGameActivity1.this.startActivity(startIntent);
+				GeneralAndCompetitionGameActivity.this.startActivity(startIntent);
 			}
 			judgePairs.set255();
 		}
@@ -597,8 +597,8 @@ public class GeneralGameActivity1 extends Activity {
 	}
 	public void  setNextLevel()
 	{
-		GeneralGameActivity1.Level++;
-		GeneralGameActivity1.this.countRemove=0;
+		GeneralAndCompetitionGameActivity.Level++;
+		GeneralAndCompetitionGameActivity.this.countRemove=0;
 	}
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
@@ -608,8 +608,8 @@ public class GeneralGameActivity1 extends Activity {
 		{
 			handler1.removeCallbacks(updateRunnable1);
 			handler2.removeCallbacks(updateRunnable2);
-			GeneralGameActivity1.this.finish();
-			GeneralGameActivity1.this.onDestroy();
+			GeneralAndCompetitionGameActivity.this.finish();
+			GeneralAndCompetitionGameActivity.this.onDestroy();
 		}
 			return true;
 		default:
@@ -623,21 +623,21 @@ public class GeneralGameActivity1 extends Activity {
 			@Override
 			public void onClick(View v) {
 				// TODO 自动生成的方法存根
-				if (GeneralGameActivity1.this.pauseButtonBoolean==false) {
-					GeneralGameActivity1.this.pauseButtonBoolean=true;
-					GeneralGameActivity1.this.ggImg.setImageResource(R.drawable.restart1);
-					GeneralGameActivity1.this.handler1.removeCallbacks(updateRunnable1);
+				if (GeneralAndCompetitionGameActivity.this.pauseButtonBoolean==false) {
+					GeneralAndCompetitionGameActivity.this.pauseButtonBoolean=true;
+					GeneralAndCompetitionGameActivity.this.ggImg.setImageResource(R.drawable.restart1);
+					GeneralAndCompetitionGameActivity.this.handler1.removeCallbacks(updateRunnable1);
 					for (int i = 0; i < imgList.size(); i++) {
 						imgList.get(i).setClickable(false);
 					}
 				}
-				else if (GeneralGameActivity1.this.pauseButtonBoolean==true) {
-					GeneralGameActivity1.this.pauseButtonBoolean=false;
-					GeneralGameActivity1.this.ggImg.setImageResource(R.drawable.pause1);
+				else if (GeneralAndCompetitionGameActivity.this.pauseButtonBoolean==true) {
+					GeneralAndCompetitionGameActivity.this.pauseButtonBoolean=false;
+					GeneralAndCompetitionGameActivity.this.ggImg.setImageResource(R.drawable.pause1);
 					for (int i = 0; i < imgList.size(); i++) {
 						imgList.get(i).setClickable(true);
 					}
-					GeneralGameActivity1.this.handler1.postDelayed(updateRunnable1, 1000);
+					GeneralAndCompetitionGameActivity.this.handler1.postDelayed(updateRunnable1, 1000);
 				}
 			}
 		});
@@ -650,21 +650,21 @@ public class GeneralGameActivity1 extends Activity {
 			@Override
 			public void onClick(View v) {
 				// TODO 自动生成的方法存根
-				if (GeneralGameActivity1.this.pauseButtonBoolean==false) {
-					GeneralGameActivity1.this.pauseButtonBoolean=true;
-					GeneralGameActivity1.this.ggImg.setImageResource(R.drawable.restart1);
-					GeneralGameActivity1.this.handler2.removeCallbacks(updateRunnable2);
+				if (GeneralAndCompetitionGameActivity.this.pauseButtonBoolean==false) {
+					GeneralAndCompetitionGameActivity.this.pauseButtonBoolean=true;
+					GeneralAndCompetitionGameActivity.this.ggImg.setImageResource(R.drawable.restart1);
+					GeneralAndCompetitionGameActivity.this.handler2.removeCallbacks(updateRunnable2);
 					for (int i = 0; i < imgList.size(); i++) {
 						imgList.get(i).setClickable(false);
 					}
 				}
-				else if (GeneralGameActivity1.this.pauseButtonBoolean==true) {
-					GeneralGameActivity1.this.pauseButtonBoolean=false;
-					GeneralGameActivity1.this.ggImg.setImageResource(R.drawable.pause1);
+				else if (GeneralAndCompetitionGameActivity.this.pauseButtonBoolean==true) {
+					GeneralAndCompetitionGameActivity.this.pauseButtonBoolean=false;
+					GeneralAndCompetitionGameActivity.this.ggImg.setImageResource(R.drawable.pause1);
 					for (int i = 0; i < imgList.size(); i++) {
 						imgList.get(i).setClickable(true);
 					}
-					GeneralGameActivity1.this.handler2.postDelayed(updateRunnable2, 1000);
+					GeneralAndCompetitionGameActivity.this.handler2.postDelayed(updateRunnable2, 1000);
 				}
 			}
 		});
