@@ -1,4 +1,4 @@
-package edu.aust.hunter.purblepairs.activity;
+package edu.aust.hunter.purblepairs.activity.other;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -40,7 +40,7 @@ public class SuccessActivity extends Activity {
 			suButton1.setText(""+RunningActivity.challengeGameActivity1.getFinalScore());
 		}
 		if (gameMode==1||gameMode==2) {
-			suButton1.setText(""+RunningActivity.generalGameActivity.getFinalScore());
+			suButton1.setText(""+RunningActivity.GeneralAndCompetitionGameActivity.getFinalScore());
 		}
 		
 		if (this.gameMode==2) {
@@ -61,16 +61,16 @@ public class SuccessActivity extends Activity {
 			public void onClick(View v) {
 				// TODO 自动生成的方法存根
 				if (gameMode==1) {
-					RunningActivity.generalGameActivity.setNextLevel();
-					RunningActivity.generalGameActivity.showAllImgView();
-					RunningActivity.generalGameActivity.setPause=false;
+					RunningActivity.GeneralAndCompetitionGameActivity.setNextLevel();
+					RunningActivity.GeneralAndCompetitionGameActivity.showAllImgView();
+					RunningActivity.GeneralAndCompetitionGameActivity.setPause=false;
 					SuccessActivity.this.finish();
 					SuccessActivity.this.onDestroy();
 				}
 				if (gameMode==2) {
-					RunningActivity.generalGameActivity.setNextLevel();
-					RunningActivity.generalGameActivity.showAllImgView();
-					RunningActivity.generalGameActivity.setPause=false;
+					RunningActivity.GeneralAndCompetitionGameActivity.setNextLevel();
+					RunningActivity.GeneralAndCompetitionGameActivity.showAllImgView();
+					RunningActivity.GeneralAndCompetitionGameActivity.setPause=false;
 					SuccessActivity.this.finish();
 					SuccessActivity.this.onDestroy();
 				}
@@ -92,7 +92,7 @@ public class SuccessActivity extends Activity {
 			public void onClick(View v) {
 				// TODO 自动生成的方法存根
 				if (gameMode==1||gameMode==2) {
-					RunningActivity.generalGameActivity.exitBoolean=true;
+					RunningActivity.GeneralAndCompetitionGameActivity.exitBoolean=true;
 					SuccessActivity.this.finish();
 					SuccessActivity.this.onDestroy();
 				}

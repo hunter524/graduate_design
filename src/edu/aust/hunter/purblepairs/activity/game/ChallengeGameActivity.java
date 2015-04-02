@@ -1,4 +1,4 @@
-package edu.aust.hunter.purblepairs.activity;
+package edu.aust.hunter.purblepairs.activity.game;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -25,12 +25,13 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.purblepairs.activity.R;
-
-import edu.aust.hunter.purblepairs.activity.GeneralAndCompetitionGameActivity.imgListener;
+import edu.aust.hunter.purblepairs.activity.other.FailActivity;
+import edu.aust.hunter.purblepairs.activity.other.RunningActivity;
+import edu.aust.hunter.purblepairs.activity.other.SuccessActivity;
 import edu.aust.hunter.purblepairs.data.GeneralLevel;
 import edu.aust.hunter.purblepairs.data.JudgePairs;
 import edu.aust.hunter.purblepairs.data.Score;
-import edu.aust.hunter.purblepairs.resource.MediaPlay;
+import edu.aust.hunter.purblepairs.resource.MediaPlay;	
 import edu.aust.hunter.purblepairs.resource.PictureSetting;
 
 public class ChallengeGameActivity extends Activity {

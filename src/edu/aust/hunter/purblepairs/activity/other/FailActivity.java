@@ -1,4 +1,4 @@
-package edu.aust.hunter.purblepairs.activity;
+package edu.aust.hunter.purblepairs.activity.other;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -47,7 +47,7 @@ public class FailActivity extends Activity {
 			public void onClick(View v) {
 				// TODO 自动生成的方法存根
 				if (gameMode==1||gameMode==2) {
-					RunningActivity.generalGameActivity.setPause=false;
+					RunningActivity.GeneralAndCompetitionGameActivity.setPause=false;
 					FailActivity.this.finish();
 				}
 				if (gameMode==3) {
@@ -63,7 +63,7 @@ public class FailActivity extends Activity {
 			public void onClick(View v) {
 				// TODO 自动生成的方法存根
 				if (gameMode==1||gameMode==2) {
-					RunningActivity.generalGameActivity.exitBoolean=true;
+					RunningActivity.GeneralAndCompetitionGameActivity.exitBoolean=true;
 					FailActivity.this.finish();
 				}
 				if (gameMode==3) {

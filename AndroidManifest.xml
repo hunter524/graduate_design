@@ -14,7 +14,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="edu.aust.hunter.purblepairs.activity.StartActivity"
+            android:name="edu.aust.hunter.purblepairs.activity.other.StartActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,42 +23,42 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="edu.aust.hunter.purblepairs.activity.SettingActivity"
+            android:name="edu.aust.hunter.purblepairs.activity.other.SettingActivity"
             android:label="@string/app_name" >
         </activity>
         <activity
-            android:name="edu.aust.hunter.purblepairs.activity.SelectModeActivity"
+            android:name="edu.aust.hunter.purblepairs.activity.other.SelectModeActivity"
             android:label="@string/app_name" >
         </activity>
         <activity
-            android:name="edu.aust.hunter.purblepairs.activity.MainActivity"
+            android:name="edu.aust.hunter.purblepairs.activity.other.MainActivity"
             android:label="@string/app_name" >
         </activity>
         <activity
-            android:name="edu.aust.hunter.purblepairs.activity.GeneralAndCompetitionGameActivity"
+            android:name="edu.aust.hunter.purblepairs.activity.game.GeneralAndCompetitionGameActivity"
             android:label="@string/app_name" >
         </activity>
         <activity
-            android:name="edu.aust.hunter.purblepairs.activity.HelpActivity"
+            android:name="edu.aust.hunter.purblepairs.activity.other.HelpActivity"
             android:label="@string/app_name" >
         </activity>
         <activity
-            android:name="edu.aust.hunter.purblepairs.activity.ChallengeGameActivity"
-            android:label="@string/app_name" >
-        </activity>
-        <activity
-            android:theme="@android:style/Theme.Dialog"
-            android:name="edu.aust.hunter.purblepairs.activity.SuccessActivity"
+            android:name="edu.aust.hunter.purblepairs.activity.game.ChallengeGameActivity"
             android:label="@string/app_name" >
         </activity>
         <activity
             android:theme="@android:style/Theme.Dialog"
-            android:name="edu.aust.hunter.purblepairs.activity.FailActivity"
+            android:name="edu.aust.hunter.purblepairs.activity.other.SuccessActivity"
             android:label="@string/app_name" >
         </activity>
         <activity
             android:theme="@android:style/Theme.Dialog"
-            android:name="edu.aust.hunter.purblepairs.activity.AboutActivity"
+            android:name="edu.aust.hunter.purblepairs.activity.other.FailActivity"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:theme="@android:style/Theme.Dialog"
+            android:name="edu.aust.hunter.purblepairs.activity.other.AboutActivity"
             android:label="@string/app_name" >
         </activity>
         

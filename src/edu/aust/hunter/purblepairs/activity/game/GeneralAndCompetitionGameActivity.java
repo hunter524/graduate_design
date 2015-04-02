@@ -1,7 +1,8 @@
-package edu.aust.hunter.purblepairs.activity;
+package edu.aust.hunter.purblepairs.activity.game;
 
 import java.util.ArrayList;
 import java.util.Random;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -18,7 +19,12 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import com.example.purblepairs.activity.R;
+
+import edu.aust.hunter.purblepairs.activity.other.FailActivity;
+import edu.aust.hunter.purblepairs.activity.other.RunningActivity;
+import edu.aust.hunter.purblepairs.activity.other.SuccessActivity;
 import edu.aust.hunter.purblepairs.data.GeneralLevel;
 import edu.aust.hunter.purblepairs.data.JudgePairs;
 import edu.aust.hunter.purblepairs.data.Score;
@@ -29,15 +35,15 @@ import edu.aust.hunter.purblepairs.resource.PictureSetting;
  * @author hutao
  * 游戏界面
  * 游戏的主体所有游戏在这个界面显示
- * 提供给玩家进行翻牌交互
+ * 提供给玩家进行翻牌交�?
  *
  */
 
 
 public class GeneralAndCompetitionGameActivity extends Activity {
-//	翻牌游戏 模式选择 1 代表 普通模式
-//	1 普通模式关卡递增 时间递减
-//	2代表竞技模式，只有关记录翻牌完成的耗时
+//	翻牌游戏 模式选择 1 代表 普�?�模�?
+//	1 普�?�模式关卡�?�增 时间递减
+//	2代表竞技模式，只有关记录翻牌完成的�?�时
 //	0监测错误
 	public MediaPlay mediaPlay ;
 	private Boolean pauseButtonBoolean= false;
@@ -45,35 +51,35 @@ public class GeneralAndCompetitionGameActivity extends Activity {
 	private int switchmode=0;
 //	存储图片和设置图片大小private
 	private PictureSetting pSetting;
-//	存储ImgView控件，通过下标获取控件
+//	存储ImgView控件，�?�过下标获取控件
 	private  ArrayList<ImageView> imgList;
 //	通过imgview 下标获取随机分配的图片Id
 	private ArrayList<Integer> buttonIdToPicId ;
 //	存储每一张牌是否被翻拍了
-//	true表示可以翻，false表示已经被翻了，不可以再翻
+//	true表示可以翻，false表示已经被翻了，不可以再�?
 	private ArrayList<Boolean> imgBooleans ;
 	private JudgePairs judgePairs;
-//	记录关卡数
+//	记录关卡�?
 	static int Level=0;
 //	记录关卡的时间数
 	private int levelTime=0;
 	private TextView ggtextView2;
 	private TextView ggTextView1;
 	private TextView ggTextView3;
-//	记录已经翻牌的次数
+//	记录已经翻牌的次�?
 	private int countOver=0;
-//	记录已经消掉的牌的对数
+//	记录已经消掉的牌的对�?
 	private int countRemove=0;
 //	计时进程 
-//	区分普通模式 和竞技模式的计时方式
-//	普通模式使用handler1时间递减 倒数计时
+//	区分普�?�模�? 和竞�?模式的计时方�?
+//	普�?�模式使用handler1时间递减 倒数计时
 //	竞技模式使用handler2时间递增计算完成时的用时
 	public Handler handler1=new Handler();
 	public Handler handler2 = new Handler();	
 	private UpdateRunnable1 updateRunnable1=new UpdateRunnable1();
 	private UpdateRunnable2 updateRunnable2=new UpdateRunnable2();
 	public  Boolean setPause = false;
-//当子窗口退出时标记这个值如果为true则该父窗口也消失
+//当子窗口�?出时标记这个值如果为true则该父窗口也消失
 //	如果为false则不消失
 	public Boolean exitBoolean=false;
 //	计分对象
@@ -81,7 +87,7 @@ public class GeneralAndCompetitionGameActivity extends Activity {
 	
 	@Override
 	protected void onPause() {
-		// TODO 自动生成的方法存根
+		// TODO 自动生成的方法存�?
 		super.onPause();
 		mediaPlay.backMusicReset();
 		this.handler1.removeCallbacks(updateRunnable1);
@@ -101,7 +107,7 @@ public class GeneralAndCompetitionGameActivity extends Activity {
 		setContentView(R.layout.activity_game_general);
 
 		mediaPlay=new MediaPlay(GeneralAndCompetitionGameActivity.this);
-		RunningActivity.generalGameActivity=GeneralAndCompetitionGameActivity.this;
+		RunningActivity.GeneralAndCompetitionGameActivity=GeneralAndCompetitionGameActivity.this;
 		Intent recIntent =getIntent();
 		switchmode=recIntent.getIntExtra("switchMode", 0);
 		GeneralAndCompetitionGameActivity.Level=1;
@@ -110,7 +116,7 @@ public class GeneralAndCompetitionGameActivity extends Activity {
 //	覆写onStart方法
 	
 
-//	覆写onResume方法，再来一局和进入下一关的时候调用
+//	覆写onResume方法，再来一�?和进入下�?关的时�?�调�?
 	
 /**
  * 	随机分配牌并记录每个imageView对应的牌
@@ -133,7 +139,7 @@ public class GeneralAndCompetitionGameActivity extends Activity {
 			arrayList2.add(arrayList1.get(randtemp));
 			arrayList1.remove(randtemp);
 		}
-//		buttonIdToPicId初始化存储每个ImgView所对应的的图片
+//		buttonIdToPicId初始化存储每个ImgView�?对应的的图片
 		for (int i = 0; i < arrayList2.size(); i++) {
 			buttonIdToPicId.set(arrayList2.get(i), i%10);
 			imgList.get(arrayList2.get(i)).setImageBitmap(pSetting.bitmapList.get(i%10));
@@ -144,12 +150,12 @@ public class GeneralAndCompetitionGameActivity extends Activity {
 	
 @Override
 	protected void onResume() {
-		// TODO 自动生成的方法存根
+		// TODO 自动生成的方法存�?
 		super.onResume();
 		mediaPlay.backMusicStart();
 		this.score=new Score();
 		this.countRemove=0;
-//		当子窗口点击退出时，父窗口也随之消失并返回
+//		当子窗口点击�?出时，父窗口也随之消失并返回
 		if (GeneralAndCompetitionGameActivity.this.exitBoolean)
 		{
 			handler1.removeCallbacks(updateRunnable1);
@@ -176,17 +182,17 @@ public class GeneralAndCompetitionGameActivity extends Activity {
 
 @Override
 	protected void onRestart() {
-		// TODO 自动生成的方法存根
+		// TODO 自动生成的方法存�?
 		super.onRestart();
-		System.out.println("调用此方法");
+		System.out.println("调用此方�?");
 	}
 
 
 @Override
 	protected void onStart() {
-		// TODO 自动生成的方法存根
+		// TODO 自动生成的方法存�?
 		super.onStart();
-//		初始化相关变量
+//		初始化相关变�?
 		
 //		GeneralGameActivity.Level=1;
 //		this.setFuction1();
@@ -196,7 +202,7 @@ public class GeneralAndCompetitionGameActivity extends Activity {
 
 /**
  * 获得图片资源
- * 存储进入pSetting的bitmapList中
+ * 存储进入pSetting的bitmapList�?
  *
  */
 	private void getResToList()
@@ -227,8 +233,8 @@ public class GeneralAndCompetitionGameActivity extends Activity {
 	}
 	/**
 	 * 获得控件的id
-	 * 将二十个ImageView的Id传入imgList中方便调用
-	 * 其余控件一一存放
+	 * 将二十个ImageView的Id传入imgList中方便调�?
+	 * 其余控件�?�?存放
 	 */
 	private void getWidetId()
 	{
@@ -280,7 +286,7 @@ public class GeneralAndCompetitionGameActivity extends Activity {
 	}
 	
 	/**
-	 * 	将屏幕的参数传给PictureSetting类
+	 * 	将屏幕的参数传给PictureSetting�?
 	 */
 	private void getSetWindPra ()
 	{
@@ -290,7 +296,7 @@ public class GeneralAndCompetitionGameActivity extends Activity {
 	}
 	/**
 	 *  ImgView监听器类设置
-	 *  根据所选择的模式不同设置不同的Click动作
+	 *  根据�?选择的模式不同设置不同的Click动作
 	 */
 	class imgListener implements OnClickListener
 	{
@@ -306,7 +312,7 @@ public class GeneralAndCompetitionGameActivity extends Activity {
 		}
 		@Override
 		public void onClick(View v) {
-			// TODO 自动生成的方法存根
+			// TODO 自动生成的方法存�?
 			if (switchmode==1) {
 				imgClick1(imgId);
 			}
@@ -318,7 +324,7 @@ public class GeneralAndCompetitionGameActivity extends Activity {
 	
 	}	
 	/**
-	 * 设置监听器
+	 * 设置监听�?
 	 */
 	private void setImgListener() {
 		for (int i = 0; i < imgList.size(); i++) {
@@ -326,7 +332,7 @@ public class GeneralAndCompetitionGameActivity extends Activity {
 		}
 	}
 	/**
-	 * 设置img为显示背景，同时初始化imgBooleans使其为可点击状态
+	 * 设置img为显示背景，同时初始化imgBooleans使其为可点击状�??
 	 */
 	private void setImgViewBack () {
 
@@ -341,7 +347,7 @@ public class GeneralAndCompetitionGameActivity extends Activity {
 	 * @author hutao
 	 *翻牌动画设置
 	 *根据传入的imgView的Id值对
-	 *控件执行该动画配置
+	 *控件执行该动画配�?
 	 */
 	private void startAnimation(final int imgId)
 	{
@@ -369,7 +375,7 @@ public class GeneralAndCompetitionGameActivity extends Activity {
     	   imgList.get(imgId).startAnimation(animation);
 	}
 	/**
-	 * 普通模式计时模块
+	 * 普�?�模式计时模�?
 	 *
 	 */
 	class UpdateRunnable1 implements Runnable{
@@ -381,9 +387,9 @@ public class GeneralAndCompetitionGameActivity extends Activity {
 			}
 			else if (levelTime==0) {
 				mediaPlay.failPlay();
-				//将线程从Handler对象中移除
+				//将线程从Handler对象中移�?
 				handler1.removeCallbacks(updateRunnable1);
-				//关闭游戏，回到首页
+				//关闭游戏，回到首�?
 				GeneralAndCompetitionGameActivity.this.onPause();
 				Intent startIntent = new Intent(GeneralAndCompetitionGameActivity.this,FailActivity.class);
 				GeneralAndCompetitionGameActivity.this.startActivity(startIntent);
@@ -412,7 +418,7 @@ public class GeneralAndCompetitionGameActivity extends Activity {
 		}
 	}
 	/**
-	 * 普通模式功能设置
+	 * 普�?�模式功能设�?
 	 *
 	 */
 	private void setFuction1()
@@ -473,7 +479,7 @@ public class GeneralAndCompetitionGameActivity extends Activity {
 		this.handler2.postDelayed(updateRunnable2, 1000);
 	}
 	/**
-	 * 普通模式imgView点击事件设置
+	 * 普�?�模式imgView点击事件设置
 	 *
 	 */
 	private void imgClick1(int imgId)
@@ -578,8 +584,8 @@ public class GeneralAndCompetitionGameActivity extends Activity {
 	}
 /**
  * 使配对成功的imgView重现
- * 配对成功即消除
- * 即设置为不可见
+ * 配对成功即消�?
+ * 即设置为不可�?
  * 进行下一关时使用此函数使其重新，同时设置imgBooleans
  * 设置为true使其可见
  */
@@ -602,7 +608,7 @@ public class GeneralAndCompetitionGameActivity extends Activity {
 	}
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
-		// TODO 自动生成的方法存根
+		// TODO 自动生成的方法存�?
 		switch (keyCode) {
 		case KeyEvent.KEYCODE_BACK:
 		{
@@ -622,7 +628,7 @@ public class GeneralAndCompetitionGameActivity extends Activity {
 		this.ggImg.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				// TODO 自动生成的方法存根
+				// TODO 自动生成的方法存�?
 				if (GeneralAndCompetitionGameActivity.this.pauseButtonBoolean==false) {
 					GeneralAndCompetitionGameActivity.this.pauseButtonBoolean=true;
 					GeneralAndCompetitionGameActivity.this.ggImg.setImageResource(R.drawable.restart1);
@@ -649,7 +655,7 @@ public class GeneralAndCompetitionGameActivity extends Activity {
 		this.ggImg.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				// TODO 自动生成的方法存根
+				// TODO 自动生成的方法存�?
 				if (GeneralAndCompetitionGameActivity.this.pauseButtonBoolean==false) {
 					GeneralAndCompetitionGameActivity.this.pauseButtonBoolean=true;
 					GeneralAndCompetitionGameActivity.this.ggImg.setImageResource(R.drawable.restart1);

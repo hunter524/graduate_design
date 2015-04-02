@@ -7,8 +7,8 @@ import android.os.Handler;
 
 import com.example.purblepairs.activity.R;
 
-import edu.aust.hunter.purblepairs.activity.ChallengeGameActivity;
-import edu.aust.hunter.purblepairs.activity.GeneralAndCompetitionGameActivity;
+import edu.aust.hunter.purblepairs.activity.game.ChallengeGameActivity;
+import edu.aust.hunter.purblepairs.activity.game.GeneralAndCompetitionGameActivity;
 
 /**
  * @author hutao

@@ -1,4 +1,4 @@
-package edu.aust.hunter.purblepairs.activity;
+package edu.aust.hunter.purblepairs.activity.other;
 
 
 

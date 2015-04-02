@@ -1,4 +1,4 @@
-package edu.aust.hunter.purblepairs.activity;
+package edu.aust.hunter.purblepairs.activity.other;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -10,6 +10,9 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 
 import com.example.purblepairs.activity.R;
+
+import edu.aust.hunter.purblepairs.activity.game.ChallengeGameActivity;
+import edu.aust.hunter.purblepairs.activity.game.GeneralAndCompetitionGameActivity;
 
 /**
  * @author hutao
